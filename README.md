@@ -1,9 +1,4 @@
-# SYSTEM DESIGN PREPARATION
-* How to prepare for and answer system design questions
-
-## <a name='myapproach'>Steps how to approach the system design questions in interviews</a>
-
-These are the steps I go through mentally in the interviews, followed by actual interview experiences:
+## <a name='myapproach'>Steps to go through mentally in the interviews</a>
 
 * a) **Be absolutely sure you understand the problem being asked**, clarify on the onset rather than assuming anything 
 * b) **Use-cases**. This is critical, you MUST know what is the system going to be used for, what is the scale it is going to be used for. Also, constraints like requests per second, requests types, data written per second, data read per second.
