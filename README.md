@@ -1,6 +1,38 @@
 # SYSTEM DESIGN PREPARATION
 * How to prepare for and answer system design questions
 
+## <a name='howtoans'> How to answer in interviews </a>
+
+* I found [hiredintech](http://www.hiredintech.com/system-design) videos an excellent place to start with. The way how to approach a design question as given in the link is really useful. It goes into how we start with clearing the use-cases of the system, then thinking in the abstract manner of the various component and the interactions. Think about the bottlenecks of the system and what is more critical for your system (eg latency vs reliability vs uptime etc) Address those giving the tradeoff of your approach. 
+
+* [system design in crack the coding interview](http://www.flipkart.com/cracking-coding-interview-150-programming-questions-solutions-english-5th/p/itmdz4pvzbhcv6uv): good approach on how to begin attacking a problem by first solving for a small usecase then expanding the system.
+
+* The best way to prepare for such questions is do mock interviews, pick any topic (given below) try to come up with a design and then go and see how and why it is designed in that manner. There is absolutely no alternative to practice!! Whiteboarding a system design question is similar to actually writing code and testing it! Just reading will only take you so far.
+
+## <a name='myapproach'>Steps how I approach the system design questions in interviews</a>
+
+These are the steps I go through mentally in the interviews, followed by actual interview experiences:
+
+* a) **Be absolutely sure you understand the problem being asked**, clarify on the onset rather than assuming anything 
+* b) **Use-cases**. This is critical, you MUST know what is the system going to be used for, what is the scale it is going to be used for. Also, constraints like requests per second, requests types, data written per second, data read per second.
+* c) Solve the problem for a **very small set**, say, 100 users. This will broadly help you figure out the data structures, components, abstract design of the overall model.
+* d) Write down the various components figured out so far and how will they interact with each other.
+* e)  As a rule of thumb remember at least these :
+ * 1. processing and servers
+ * 2. storage 
+ * 3. caching 
+ * 4. concurrency and communication
+ * 5. security 
+ * 6. load balancing and proxy 
+ * 7. CDN 
+ * 8.  Monetization: if relevant, how will you monetize?
+ eg. What kind of DB (Is Postgres enough, if not why?), do you need caching and how much, is security a prime concern? 
+* f) **Special cases** for the question asked. Say designing a system for storing thumbnails, will a file system be enough? What if you have to scale for facebook or google? Will a nosql based database work?
+* g) After I have my components in place, what I generally try to do is look for minor optimization in various places according to the use-cases, various tradeoffs that will help in better scaling in 99% cases.
+* h) [Scaling out or up]  (http://highscalability.com/blog/2014/5/12/4-architecture-issues-when-scaling-web-applications-bottlene.html)
+* i) Check with the interviewer is there any other special case he is looking to solve? Also, it really helps if you know about the company you are interviewing with, what its architecture is, what will the interviewer have more interest in based on the company and what he works on? 
+
+
 ## Objective
 *Learning about and implementing large-scale distributed system is not easy. I do not want to give the impression that it's something that can be learnt in a month.* 
 What this repository aims to achieve, is for software engineers and students to get a rough idea of how the thought process of designing a large scale works and how big companies have managed to solve really hard problems. Along with that, there is a recent trend for companies to have an open-ended interview with system design questions, which is at times hard for engineers of all levels if they haven't gotten the opportunity to work on such systems themselves. 
@@ -48,37 +80,6 @@ Should know the TCP/IP stack, basics of how Internet, HTTP, TCP/IP work at the m
 4. DB basics: types of DB's (SQL vs noSQL etc ), hashing and indexing, EAV based databases, Sharding, caching for databases, master-slave etc
 5. A basic idea of how a basic web architecture is: say load balancers, proxy, servers, Database servers, caching servers, precompute, logging big data etc. Just know broadly what is each layer for.  
 6. very basic summary of what the [CAP theorem](http://robertgreiner.com/2014/08/cap-theorem-revisited/) is (Have never been asked about the theorem itself, but knowing it will help you in designing large-scale systems. 
-
-## <a name='howtoans'> How to answer in interviews </a>
-
-* I found [hiredintech](http://www.hiredintech.com/system-design) videos an excellent place to start with. The way how to approach a design question as given in the link is really useful. It goes into how we start with clearing the use-cases of the system, then thinking in the abstract manner of the various component and the interactions. Think about the bottlenecks of the system and what is more critical for your system (eg latency vs reliability vs uptime etc) Address those giving the tradeoff of your approach. 
-
-* [system design in crack the coding interview](http://www.flipkart.com/cracking-coding-interview-150-programming-questions-solutions-english-5th/p/itmdz4pvzbhcv6uv): good approach on how to begin attacking a problem by first solving for a small usecase then expanding the system.
-
-* The best way to prepare for such questions is do mock interviews, pick any topic (given below) try to come up with a design and then go and see how and why it is designed in that manner. There is absolutely no alternative to practice!! Whiteboarding a system design question is similar to actually writing code and testing it! Just reading will only take you so far.
-
-## <a name='myapproach'>Steps how I approach the system design questions in interviews</a>
-
-These are the steps I go through mentally in the interviews, followed by actual interview experiences:
-
-* a) **Be absolutely sure you understand the problem being asked**, clarify on the onset rather than assuming anything 
-* b) **Use-cases**. This is critical, you MUST know what is the system going to be used for, what is the scale it is going to be used for. Also, constraints like requests per second, requests types, data written per second, data read per second.
-* c) Solve the problem for a **very small set**, say, 100 users. This will broadly help you figure out the data structures, components, abstract design of the overall model.
-* d) Write down the various components figured out so far and how will they interact with each other.
-* e)  As a rule of thumb remember at least these :
- * 1. processing and servers
- * 2. storage 
- * 3. caching 
- * 4. concurrency and communication
- * 5. security 
- * 6. load balancing and proxy 
- * 7. CDN 
- * 8.  Monetization: if relevant, how will you monetize?
- eg. What kind of DB (Is Postgres enough, if not why?), do you need caching and how much, is security a prime concern? 
-* f) **Special cases** for the question asked. Say designing a system for storing thumbnails, will a file system be enough? What if you have to scale for facebook or google? Will a nosql based database work?
-* g) After I have my components in place, what I generally try to do is look for minor optimization in various places according to the use-cases, various tradeoffs that will help in better scaling in 99% cases.
-* h) [Scaling out or up]  (http://highscalability.com/blog/2014/5/12/4-architecture-issues-when-scaling-web-applications-bottlene.html)
-* i) Check with the interviewer is there any other special case he is looking to solve? Also, it really helps if you know about the company you are interviewing with, what its architecture is, what will the interviewer have more interest in based on the company and what he works on? 
 
 ## <a name='designques'> Common Design questions </a>
 It generally depends what you are and you will be working on. Also what your level is but these are some of the more frequent interview questions.
